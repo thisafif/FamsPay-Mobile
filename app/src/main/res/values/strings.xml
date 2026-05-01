@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">FamsPay</string>
+    <string name="app_name" translatable="false">FamsPay</string>
+
+    <!--Onboarding-->
+    <string name="onboarding_title_1">Kelola Keuangan Keluarga Lebih Mudah</string>
+    <string name="onboarding_title_2">Pencatatan Keuangan Setiap Transaksi</string>
+    <string name="onboarding_title_3">Kontrol Anggaran Bulanan</string>
+    <string name="onboarding_title_4">Kelola Keuangan Bersama</string>
+
+    <!--Onboarding Desc-->
+    <string name="onboarding_desc_1">Catat semua pemasukan dan pengeluaran keluarga dalam satu aplikasi. Semua anggota dapat melihat kondisi keuangan dengan lebih jelas dan terorganisir.</string>
+    <string name="onboarding_desc_2">Tambahkan pemasukan atau pengeluaran dengan cepat. Lengkapi dengan kategori dan catatan agar keuangan lebih terorganisir.</string>
+    <string name="onboarding_desc_3">Tetapkan batas pengeluaran dan pantau sisa anggaran setiap bulan agar keuangan tetap terkendali.</string>
+    <string name="onboarding_desc_4">Bergabung dalam satu keluarga dan kelola keuangan masing-masing dengan lebih transparan dan terstruktur.</string>
+
+    <!-- button di onboarding-->
+    <string name="btn_mulai">Mulai \u2192</string>
+    <string name="btn_lanjut">Lanjut \u2192</string>
 </resources>
