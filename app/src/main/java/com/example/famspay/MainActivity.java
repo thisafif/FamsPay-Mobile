@@ -20,34 +20,33 @@ public class MainActivity extends AppCompatActivity {
     private OnboardingAdapter adapter;
     private ImageView btnBack;
     private MaterialButton btnNext;
-    private LinearLayout layoutIndicators; // Tambahkan deklarasi ini
+    private LinearLayout layoutIndicators;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Memaksa Light Mode agar desain tetap konsisten
+        // force pakai light mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // Memastikan merujuk ke layout utama[cite: 1]
+        setContentView(R.layout.activity_main); // layout 1
 
         viewPager = findViewById(R.id.viewPager);
         btnBack = findViewById(R.id.btnBack);
         btnNext = findViewById(R.id.btnNext);
-        layoutIndicators = findViewById(R.id.layoutIndicators); // Inisialisasi container indikator
+        layoutIndicators = findViewById(R.id.layoutIndicators); // container indikator viewpager
 
         setupOnboardingItems();
         setupActionButtons();
 
-        // Panggil inisialisasi indikator (4 halaman)
+        // inisialisasi indikator (4 pager)
         setupIndicators(4);
-        // Set indikator awal ke posisi 0
+        // indicator set ke 0
         setCurrentIndicator(0);
     }
 
     private void setupOnboardingItems() {
         List<OnboardingItem> items = new ArrayList<>();
 
-        // Menggunakan resource animasi Lottie dari folder raw[cite: 1]
         items.add(new OnboardingItem(R.raw.onboarding1, R.string.onboarding_title_1, R.string.onboarding_desc_1));
         items.add(new OnboardingItem(R.raw.onboarding2, R.string.onboarding_title_2, R.string.onboarding_desc_2));
         items.add(new OnboardingItem(R.raw.onboarding3, R.string.onboarding_title_3, R.string.onboarding_desc_3));
@@ -61,17 +60,16 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
 
-                // Update tampilan indikator saat halaman digeser
+                // indicator
                 setCurrentIndicator(position);
 
-                // Mengatur visibilitas tombol kembali bulat kustom
+                // visibility tombol
                 if (position == 0) {
                     btnBack.setVisibility(View.INVISIBLE);
                 } else {
                     btnBack.setVisibility(View.VISIBLE);
                 }
 
-                // Mengatur teks tombol navigasi (Lanjut vs Mulai)
                 if (position == adapter.getItemCount() - 1) {
                     btnNext.setText(R.string.btn_mulai);
                 } else {
