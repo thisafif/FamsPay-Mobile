@@ -1,4 +1,4 @@
-package com.example.famspay;
+package com.kelompoksepuluh.famspay;
 
 import android.view.LayoutInflater;
 import android.view.View;

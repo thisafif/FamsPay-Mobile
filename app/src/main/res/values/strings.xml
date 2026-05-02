@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">FamsPay</string>
 
+    <!-- oauth google PENTING BGT -->
+    <string name="default_web_client_id">161524113850-si631j71k543hcfnbkp7tl346l6b2h91.apps.googleusercontent.com</string>
+
     <!--Onboarding-->
     <string name="onboarding_title_1">Kelola Keuangan Keluarga Lebih Mudah</string>
     <string name="onboarding_title_2">Pencatatan Keuangan Setiap Transaksi</string>
@@ -16,4 +19,35 @@
     <!-- button di onboarding-->
     <string name="btn_mulai">Mulai \u2192</string>
     <string name="btn_lanjut">Lanjut \u2192</string>
+
+    <!-- layar sebelum login ama register -->
+    <string name="auth_title">Selamat datang di FamsPay</string>
+    <string name="auth_desc">Kelola keuangan keluarga dengan lebih transparan dan mudah.</string>
+
+    <!-- button di auth -->
+    <string name="btn_masuk">Masuk</string>
+    <string name="btn_daftar">Daftar</string>
+
+    <!-- layar register -->
+    <string name="register_title">Halo, Salam Kenal!~</string>
+    <string name="register_title_desc">Yuk, mulai perjalanan keuanganmu dengan FamsPay.</string>
+    <string name="register_name">Nama Lengkap</string>
+    <string name="register_email">Email</string>
+    <string name="register_password">Password</string>
+    <string name="btn_register">Daftar</string>
+    <string name="or">atau</string>
+    <string name="google_sign_in">Lanjutkan dengan Google</string>
+    <string name="register_footer_text">Sudah punya akun? Masuk</string>
+
+    <!-- layar login -->
+    <string name="login_title">Selamat Datang Kembali!</string>
+    <string name="login_email_hint">Masukkan e-mail</string>
+    <string name="login_password_hint">Password</string>
+    <string name="btn_login">Masuk</string>
+    <string name="forgot_password">Forgot the password?</string>
+
+    <!-- lupa password -->
+    <string name="forgot_password_title">Reset Password</string>
+    <string name="forgot_password_desc">Masukkan email yang terhubung dengan akun Anda dan kami akan mengirim email berisi instruksi untuk mengatur ulang kata sandi Anda.</string>
+    <string name="btn_send">Kirim</string>
 </resources>

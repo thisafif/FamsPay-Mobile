@@ -1,4 +1,4 @@
-package com.example.famspay;
+package com.kelompoksepuluh.famspay;
 
 public class OnboardingItem {
     int lottieResId;
