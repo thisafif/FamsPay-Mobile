@@ -1,4 +1,4 @@
-package com.example.famspay;
+package com.kelompoksepuluh.famspay;
 
 import org.junit.Test;
 

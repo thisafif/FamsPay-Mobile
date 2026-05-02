@@ -1,4 +1,4 @@
-package com.example.famspay;
+package com.kelompoksepuluh.famspay;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // force pakai light mode
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // maksa pake light mode
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // layout 1
@@ -38,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setupOnboardingItems();
         setupActionButtons();
 
-        // inisialisasi indikator (4 pager)
         setupIndicators(4);
-        // indicator set ke 0
         setCurrentIndicator(0);
     }
 
@@ -84,10 +81,9 @@ public class MainActivity extends AppCompatActivity {
             if (viewPager.getCurrentItem() + 1 < adapter.getItemCount()) {
                 viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
             } else {
-                // Navigasi ke tahap berikutnya jika onboarding selesai
-                // Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                // startActivity(intent);
-                // finish();
+                Intent intent = new Intent(MainActivity.this, AuthActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

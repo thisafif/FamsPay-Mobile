@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="24dp"
-    android:layout_gravity="center_horizontal">
+    android:layout_gravity="center_horizontal"
+    android:background="@color/white">
 
     <!--lottie-->
     <com.airbnb.lottie.LottieAnimationView
