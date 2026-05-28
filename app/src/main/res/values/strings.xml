@@ -50,4 +50,22 @@
     <string name="forgot_password_title">Reset Password</string>
     <string name="forgot_password_desc">Masukkan email yang terhubung dengan akun Anda dan kami akan mengirim email berisi instruksi untuk mengatur ulang kata sandi Anda.</string>
     <string name="btn_send">Kirim</string>
+
+    <!-- choose fam activity-->
+    <string name="choose_family_title">Selamat datang di FamsPay!</string>
+    <string name="choose_family_desc">Pilih yang sesuai dengan tujuan Anda</string>
+    <string name="btn_create_family">Saya ingin membuat grup Family baru</string>
+    <string name="btn_join_family">Saya ingin bergabung ke grup Family</string>
+
+    <!-- create family activity -->
+    <string name="create_family_title">Buat Grup Family Baru</string>
+    <string name="create_family_desc">Jadilah Admin dan kelola keuangan keluargamu.</string>
+    <string name="create_family_input_hint">Nama Keluarga</string>
+    <string name="btn_create_family_action">Buat Keluarga</string>
+
+    <!-- join family activity -->
+    <string name="join_family_title">Gabung Keluarga</string>
+    <string name="join_family_desc">Masukkan Join Code dari Admin keluargamu.</string>
+    <string name="join_family_input_hint">Ketik Join Code</string>
+    <string name="btn_join_family_action">Gabung</string>
 </resources>
