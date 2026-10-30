@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "161524113850",
+    "project_id": "famspay-eba83",
+    "storage_bucket": "famspay-eba83.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161524113850:android:b92065ced7c4ad7997fd83",
+        "android_client_info": {
+          "package_name": "com.kelompoksepuluh.famspay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBRvlgE2snvNY6OmEvPvC6uSiSYAVzgwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
