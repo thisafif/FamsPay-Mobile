@@ -22,7 +22,7 @@ public class GoogleSignInHelper {
     private GoogleSignInCallback callback;
 
     public interface GoogleSignInCallback {
-        void onSignInSuccess(String userId, String email);
+        void onSignInSuccess(String idToken, String email);
         void onSignInFailure(String errorMessage);
     }
 
@@ -69,11 +69,11 @@ public class GoogleSignInHelper {
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(activity, task -> {
                     if (task.isSuccessful()) {
-                        String userId = firebaseAuth.getCurrentUser().getUid();
+                        String idTokenResult = idToken; // Kirim idToken asli ke callback untuk dikirim ke backend
                         String email = firebaseAuth.getCurrentUser().getEmail();
                         Log.d(TAG, "Firebase auth dengan Google berhasil: " + email);
                         if (callback != null) {
-                            callback.onSignInSuccess(userId, email);
+                            callback.onSignInSuccess(idTokenResult, email);
                         }
                     } else {
                         Log.w(TAG, "Firebase signInWithCredential gagal", task.getException());

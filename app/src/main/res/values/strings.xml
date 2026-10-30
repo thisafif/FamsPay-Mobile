@@ -50,4 +50,102 @@
     <string name="forgot_password_title">Reset Password</string>
     <string name="forgot_password_desc">Masukkan email yang terhubung dengan akun Anda dan kami akan mengirim email berisi instruksi untuk mengatur ulang kata sandi Anda.</string>
     <string name="btn_send">Kirim</string>
+
+    <!-- choose fam activity-->
+    <string name="choose_family_title">Selamat datang di FamsPay!</string>
+    <string name="choose_family_desc">Pilih yang sesuai dengan tujuan Anda</string>
+    <string name="btn_create_family">Saya ingin membuat grup Family baru</string>
+    <string name="btn_join_family">Saya ingin bergabung ke grup Family</string>
+
+    <!-- create family activity -->
+    <string name="create_family_title">Buat Grup Family Baru</string>
+    <string name="create_family_desc">Jadilah Admin dan kelola keuangan keluargamu.</string>
+    <string name="create_family_input_hint">Nama Keluarga</string>
+    <string name="btn_create_family_action">Buat Keluarga</string>
+
+    <!-- join family activity -->
+    <string name="join_family_title">Gabung Keluarga</string>
+    <string name="join_family_desc">Masukkan Join Code dari Admin keluargamu.</string>
+    <string name="join_family_input_hint">Ketik Join Code</string>
+    <string name="btn_join_family_action">Gabung</string>
+
+    <!-- Home Screen -->
+    <string name="home_welcome">Selamat Datang!</string>
+    <string name="home_hello">Haloo, %1$s!</string>
+    <string name="home_limit_title">Sisa limit bulan ini (IDR):</string>
+    <string name="home_spending_stats">Statistik Pengeluaran</string>
+    <string name="home_total_spending">Total Pengeluaran</string>
+    <string name="home_category">Kategori</string>
+    <string name="home_last_transactions">Transaksi Terakhir</string>
+    <string name="home_see_more">Lihat selengkapnya ></string>
+    <string name="home_filter">Filter</string>
+    <string name="home_savings_goals">Target Tabungan</string>
+    <string name="home_manage_goals">Kelola Goals ></string>
+
+    <!-- Add Transaction -->
+    <string name="add_trans_title">Transaksi Baru</string>
+    <string name="add_trans_expense">Pengeluaran</string>
+    <string name="add_trans_income">Pemasukan</string>
+    <string name="add_trans_name_label">Nama Transaksi</string>
+    <string name="add_trans_name_hint">Masukkan Nama Transaksi</string>
+    <string name="add_trans_amount_label">Nominal</string>
+    <string name="add_trans_category_label">Kategori</string>
+    <string name="add_trans_date_label">Tanggal</string>
+    <string name="add_trans_note_label">Catatan</string>
+    <string name="add_trans_submit">Tambahkan Transaksi</string>
+    <string name="add_trans_submit_expense">Tambahkan Pengeluaran</string>
+    <string name="add_trans_submit_income">Tambahkan Pemasukan</string>
+
+    <!-- History Screen -->
+    <string name="history_title">Transaksi Terakhir</string>
+    <string name="history_filter_daily">Harian</string>
+    <string name="history_filter_monthly">Bulanan</string>
+    <string name="history_filter_yearly">Tahunan</string>
+
+    <!-- Goal Screen -->
+    <string name="goal_title">Target Tabungan</string>
+    <string name="goal_desc">Kelola batasan belanja dan progres target tabungan pribadi Anda.</string>
+    <string name="btn_add_target">+ Target</string>
+    <string name="add_goal_title">Tambah Target</string>
+    <string name="add_goal_name_label">Nama Target</string>
+    <string name="add_goal_amount_label">Nominal Target</string>
+    <string name="edit_goal_title">Edit Target</string>
+    <string name="goal_delete_line2">menghapus target?</string>
+
+    <!-- Admin Screen -->
+    <string name="admin_title">Kelola Anggota Keluarga</string>
+    <string name="admin_desc">Atur hak akses, limit pengeluaran, dan undang anggota baru.</string>
+    <string name="admin_join_code_label">Kode Bergabung Keluarga (Join Code)</string>
+    <string name="admin_member_list_title">Daftar Anggota Keluarga</string>
+    <string name="admin_sisa_limit">Sisa limit: %1$s</string>
+
+    <!-- Member Detail Screen -->
+    <string name="member_detail_title">Profil Keuangan Anggota</string>
+    <string name="member_detail_owner_label">Dompet milik:</string>
+    <string name="member_detail_sisa_limit">Sisa Limit</string>
+    <string name="member_detail_total_limit">Total Limit</string>
+    <string name="member_detail_usage_title">Pemakaian Limit</string>
+    <string name="member_detail_terpakai">Terpakai: %1$s</string>
+    <string name="member_detail_limit_label">Limit: %1$s</string>
+    <string name="member_detail_btn_change_limit">Ubah Limit</string>
+    <string name="member_detail_btn_save">Simpan</string>
+    <string name="member_no_data">Tidak ada data</string>
+    <string name="member_no_trans">Tidak ada transaksi</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_desc">Personalisasi pengalaman anda.</string>
+    <string name="settings_profile_section">Profil Saya</string>
+    <string name="settings_first_name">Nama Depan</string>
+    <string name="settings_last_name">Nama Belakang</string>
+    <string name="settings_email">Email</string>
+    <string name="settings_password">Password</string>
+    <string name="settings_btn_save">Simpan Perubahan</string>
+    <string name="settings_logout_confirm">Apakah anda yakin ingin keluar?</string>
+
+    <!-- Edit Transaction -->
+    <string name="edit_trans_title">Edit Transaksi</string>
+    <string name="edit_trans_submit">Perbarui Transaksi</string>
+    <string name="edit_trans_submit_expense">Perbarui Pengeluaran</string>
+    <string name="edit_trans_submit_income">Perbarui Pemasukan</string>
 </resources>
