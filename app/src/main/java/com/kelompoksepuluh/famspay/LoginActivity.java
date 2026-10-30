@@ -20,6 +20,8 @@ import com.kelompoksepuluh.famspay.data.model.LoginData;
 import com.kelompoksepuluh.famspay.data.model.LoginRequest;
 import com.kelompoksepuluh.famspay.data.remote.ApiClient;
 import com.kelompoksepuluh.famspay.data.remote.ApiService;
+import com.kelompoksepuluh.famspay.data.model.User;
+import com.kelompoksepuluh.famspay.utils.ApiUtils;
 import com.kelompoksepuluh.famspay.utils.SessionManager;
 
 import android.util.Log;
@@ -62,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         // Initialize Views and Listeners
         initViews();
         setupManualLogin();
-        setupGoogleSignIn();
     }
 
     private void initViews() {
@@ -76,13 +77,6 @@ public class LoginActivity extends AppCompatActivity {
             btnBack.setOnClickListener(v -> finish());
         }
 
-        TextView tvForgotPassword = findViewById(R.id.tvForgotPassword);
-        if (tvForgotPassword != null) {
-            tvForgotPassword.setOnClickListener(v -> {
-                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-                startActivity(intent);
-            });
-        }
     }
 
     private void setupManualLogin() {
@@ -138,8 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                     String token = response.body().data.token;
                     sessionManager.saveToken(token);
 
-                    Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
-                    navigateToChooseFamily();
+                    fetchMeAndNavigate();
 
                 } else {
                     String errorMessage = "Email atau password salah";
@@ -171,6 +164,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setupGoogleSignIn() {
+        if (btnGoogle != null) {
+            btnGoogle.setEnabled(false);
+            btnGoogle.setAlpha(0.45f);
+        }
+        if (!isGoogleLoginEnabled()) return;
+
         googleSignInHelper = new GoogleSignInHelper(this);
 
         googleSignInHelper.setCallback(new GoogleSignInHelper.GoogleSignInCallback() {
@@ -229,6 +228,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private boolean isGoogleLoginEnabled() {
+        return false;
+    }
+
     private void setLoading(boolean isLoading) {
         if (btnLogin != null) {
             btnLogin.setEnabled(!isLoading);
@@ -247,6 +250,34 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, ChooseFamilyActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void fetchMeAndNavigate() {
+        apiService.getMe().enqueue(new Callback<ApiResponse<User>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().data != null) {
+                    User user = response.body().data;
+                    sessionManager.saveUser(user.id, user.fullName, user.role, user.familyId);
+                    Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(
+                            LoginActivity.this,
+                            user.familyId == null ? ChooseFamilyActivity.class : HomeActivity.class
+                    );
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, ApiUtils.errorMessage(response, "Gagal mengambil profil"), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Koneksi gagal: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

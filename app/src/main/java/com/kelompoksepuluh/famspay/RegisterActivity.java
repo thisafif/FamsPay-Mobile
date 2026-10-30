@@ -17,6 +17,7 @@ import com.google.android.material.button.MaterialButton;
 import com.kelompoksepuluh.famspay.data.model.ApiResponse;
 import com.kelompoksepuluh.famspay.data.model.LoginData;
 import com.kelompoksepuluh.famspay.data.model.RegisterRequest;
+import com.kelompoksepuluh.famspay.data.model.User;
 import com.kelompoksepuluh.famspay.data.remote.ApiClient;
 import com.kelompoksepuluh.famspay.data.remote.ApiService;
 import com.kelompoksepuluh.famspay.utils.SessionManager;
@@ -56,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         initViews();
         setupActions();
-        setupGoogleSignIn();
     }
 
     private void initViews() {
@@ -130,11 +130,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         RegisterRequest request = new RegisterRequest(fullName, email, password);
 
-        apiService.register(request).enqueue(new Callback<ApiResponse<LoginData>>() {
+        apiService.register(request).enqueue(new Callback<ApiResponse<User>>() {
             @Override
             public void onResponse(
-                    Call<ApiResponse<LoginData>> call,
-                    Response<ApiResponse<LoginData>> response
+                    Call<ApiResponse<User>> call,
+                    Response<ApiResponse<User>> response
             ) {
                 setLoading(false);
 
@@ -150,15 +150,7 @@ public class RegisterActivity extends AppCompatActivity {
                     
                     // Jika backend langsung kasih token di register, pakai itu.
                     // Jika tidak (seperti logcat tadi), kita tembak login otomatis.
-                    if (response.body().data != null && response.body().data.token != null) {
-                        String token = response.body().data.token;
-                        sessionManager.saveToken(token);
-                        Toast.makeText(RegisterActivity.this, "Registrasi berhasil", Toast.LENGTH_SHORT).show();
-                        navigateToChooseFamily();
-                    } else {
-                        // Backend tidak kasih token saat register, lakukan auto-login
-                        autoLoginAfterRegister(email, password);
-                    }
+                    autoLoginAfterRegister(email, password);
 
                 } else {
                     String errorMessage = "Registrasi gagal";
@@ -178,7 +170,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ApiResponse<LoginData>> call, Throwable t) {
+            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
                 setLoading(false);
                 Toast.makeText(
                         RegisterActivity.this,
@@ -198,7 +190,7 @@ public class RegisterActivity extends AppCompatActivity {
                     String token = response.body().data.token;
                     sessionManager.saveToken(token);
                     Toast.makeText(RegisterActivity.this, "Registrasi & Login Berhasil", Toast.LENGTH_SHORT).show();
-                    navigateToChooseFamily();
+                    fetchMeAndNavigate();
                 } else {
                     // Registrasi sukses tapi login gagal (jarang terjadi)
                     Toast.makeText(RegisterActivity.this, "Registrasi berhasil, silakan lakukan login.", Toast.LENGTH_LONG).show();
@@ -215,6 +207,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setupGoogleSignIn() {
+        if (btnGoogle != null) {
+            btnGoogle.setEnabled(false);
+            btnGoogle.setAlpha(0.45f);
+        }
+        if (!isGoogleLoginEnabled()) return;
+
         googleSignInHelper = new GoogleSignInHelper(this);
 
         googleSignInHelper.setCallback(new GoogleSignInHelper.GoogleSignInCallback() {
@@ -256,6 +254,10 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    private boolean isGoogleLoginEnabled() {
+        return false;
+    }
+
     private void setLoading(boolean isLoading) {
         btnRegister.setEnabled(!isLoading);
         btnGoogle.setEnabled(!isLoading);
@@ -272,6 +274,32 @@ public class RegisterActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    private void fetchMeAndNavigate() {
+        apiService.getMe().enqueue(new Callback<ApiResponse<User>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().data != null) {
+                    User user = response.body().data;
+                    sessionManager.saveUser(user.id, user.fullName, user.role, user.familyId);
+                    Intent intent = new Intent(
+                            RegisterActivity.this,
+                            user.familyId == null ? ChooseFamilyActivity.class : HomeActivity.class
+                    );
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    navigateToChooseFamily();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
+                navigateToChooseFamily();
+            }
+        });
     }
 
     @Override

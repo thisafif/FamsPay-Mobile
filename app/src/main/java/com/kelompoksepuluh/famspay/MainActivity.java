@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.button.MaterialButton;
+import com.kelompoksepuluh.famspay.utils.SessionManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,18 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // maksa pake light mode
 
         super.onCreate(savedInstanceState);
+
+        SessionManager sessionManager = new SessionManager(this);
+        if (sessionManager.isLoggedIn()) {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    sessionManager.getFamilyId() == null ? ChooseFamilyActivity.class : HomeActivity.class
+            );
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         setContentView(R.layout.activity_main); // layout 1
 
         viewPager = findViewById(R.id.viewPager);

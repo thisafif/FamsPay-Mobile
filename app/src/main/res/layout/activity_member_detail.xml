@@ -65,6 +65,19 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
+                    android:id="@+id/cardBackBlue"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_home_card_flat"
+                    android:backgroundTint="@color/text_blue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/walletContainer" />
+
+                <View
                     android:id="@+id/cardBackPink"
                     android:layout_width="0dp"
                     android:layout_height="140dp"
@@ -83,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="45dp"
                     app:cardBackgroundColor="@color/primary_medium"
-                    app:cardCornerRadius="32dp"
+                    app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +131,7 @@
                             android:id="@+id/tvMemberName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Eki Shinta"
+                            android:text="Memuat anggota"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold"
@@ -209,6 +222,7 @@
                         android:textStyle="bold" />
 
                     <ProgressBar
+                        android:id="@+id/progressLimitUsage"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="12dp"
@@ -237,6 +251,38 @@
                             android:textColor="@color/gray" />
                     </RelativeLayout>
 
+                    <LinearLayout
+                        android:id="@+id/llEditLimit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/etNewLimit"
+                            android:layout_width="0dp"
+                            android:layout_height="46dp"
+                            android:layout_weight="1.5"
+                            android:background="@drawable/bg_transaction_input"
+                            android:hint="Nominal Baru"
+                            android:inputType="number"
+                            android:paddingHorizontal="12dp"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/btnSaveLimit"
+                            android:layout_width="0dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/green"
+                            android:text="@string/member_detail_btn_save"
+                            android:textAllCaps="false"
+                            android:textStyle="bold"
+                            app:cornerRadius="16dp" />
+                    </LinearLayout>
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnChangeLimit"
                         style="@style/Widget.Material3.Button.TonalButton"
@@ -252,7 +298,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Stats & Recent Trans Placeholders (Reusing existing components logic) -->
+            <!-- Stats & Recent Transactions -->
             <TextView
                 android:id="@+id/tvMemberStatsTitle"
                 android:layout_width="wrap_content"
@@ -264,16 +310,64 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardLimitUsage" />
 
-            <!-- Empty State Illustration/Text -->
-            <TextView
-                android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMemberTransactionSummary"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:layout_constraintTop_toBottomOf="@id/tvMemberStatsTitle"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvMemberTransactionSummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Masuk Rp0 | Keluar Rp0 | Net Rp0"
+                        android:textColor="@color/black"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvMemberExpenseSummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Total pengeluaran anggota: Rp0"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvMemberTransactionState"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_transaction_input"
+                android:padding="14dp"
                 android:text="@string/member_no_trans"
                 android:textColor="@color/gray"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvMemberStatsTitle" />
+                app:layout_constraintTop_toBottomOf="@id/cardMemberTransactionSummary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMemberTransactions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/tvMemberTransactionState" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

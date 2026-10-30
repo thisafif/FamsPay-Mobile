@@ -3,7 +3,6 @@ package com.kelompoksepuluh.famspay.data.model;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
-    // Diubah ke String karena backend menggunakan MongoDB ID (hex string)
     public String id;
     
     @SerializedName("full_name")
@@ -19,5 +18,20 @@ public class User {
     public String familyId;
     
     @SerializedName("wallet_balance")
-    public double walletBalance; // Gunakan double untuk mengantisipasi nilai desimal dari API
+    public long walletBalance;
+
+    @SerializedName("monthly_limit_base")
+    public long monthlyLimitBase;
+
+    @SerializedName("remaining_limit")
+    public long remainingLimit;
+
+    @SerializedName("current_month_expense")
+    public long currentMonthExpense;
+
+    @SerializedName("created_at")
+    public String createdAt;
+
+    @SerializedName("updated_at")
+    public String updatedAt;
 }

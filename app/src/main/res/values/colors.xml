@@ -7,4 +7,15 @@
     <color name="light_gray">#F3F4F6</color>
     <color name="red">#F22D2D</color>
     <color name="background_gray">#F5F6F9</color>
+
+    <!-- Figma Home Colors -->
+    <color name="primary_dark">#064E3B</color>
+    <color name="primary_medium">#059669</color>
+    <color name="primary_light">#047857</color>
+    <color name="text_blue">#718EBF</color>
+    <color name="chart_green_light">#6EE7B7</color>
+    <color name="chart_pink">#ff83c7</color>
+    <color name="chart_blue">#E7EDFF</color>
+    <color name="chart_cyan">#DCFAF8</color>
+    <color name="trans_red">#FE5C73</color>
 </resources>

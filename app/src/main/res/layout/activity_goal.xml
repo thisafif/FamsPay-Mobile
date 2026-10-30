@@ -63,6 +63,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvGoalDesc" />
 
+            <TextView
+                android:id="@+id/tvGoalState"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_transaction_input"
+                android:fontFamily="@font/inter"
+                android:padding="16dp"
+                android:text="Memuat target..."
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnAddTarget" />
+
             <!-- Goal Cards -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardGoal1"
@@ -71,7 +87,7 @@
                 android:layout_marginTop="24dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
-                app:layout_constraintTop_toBottomOf="@id/btnAddTarget">
+                app:layout_constraintTop_toBottomOf="@id/tvGoalState">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,7 +96,7 @@
                         android:id="@+id/tvGoalName1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pergi Umroh"
+                        android:text="Memuat target"
                         android:textStyle="bold"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -90,11 +106,54 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Rp4.000.000 / Rp6.000.000"
+                        android:text="Rp0 / Rp0"
                         android:textColor="@color/gray"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvGoalName1" />
+                    <TextView
+                        android:id="@+id/tvGoalStatus1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_wallet_chip"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:text="Completed"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoalAmount1" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAllocate1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/green"
+                        android:minWidth="0dp"
+                        android:paddingHorizontal="14dp"
+                        android:text="Alokasi Dana"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoalStatus1" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnWithdraw1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/primary_dark"
+                        android:minWidth="0dp"
+                        android:paddingHorizontal="14dp"
+                        android:text="Withdraw"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintStart_toEndOf="@id/btnAllocate1"
+                        app:layout_constraintTop_toTopOf="@id/btnAllocate1" />
                     <ImageView
                         android:id="@+id/btnDelete1"
                         android:layout_width="24dp"
@@ -113,13 +172,14 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/gray" />
                     <ProgressBar
+                        android:id="@+id/progressGoal1"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="12dp"
                         android:layout_marginTop="16dp"
                         android:progress="66"
                         android:progressTint="@color/green"
-                        app:layout_constraintTop_toBottomOf="@id/tvGoalAmount1" />
+                        app:layout_constraintTop_toBottomOf="@id/btnAllocate1" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -139,7 +199,7 @@
                         android:id="@+id/tvGoalName2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Travelling ke Labuan Bajo"
+                        android:text="Memuat target"
                         android:textStyle="bold"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -149,11 +209,54 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Rp1.500.000 / Rp2.000.000"
+                        android:text="Rp0 / Rp0"
                         android:textColor="@color/gray"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvGoalName2" />
+                    <TextView
+                        android:id="@+id/tvGoalStatus2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_wallet_chip"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:text="Completed"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoalAmount2" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAllocate2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/green"
+                        android:minWidth="0dp"
+                        android:paddingHorizontal="14dp"
+                        android:text="Alokasi Dana"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoalStatus2" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnWithdraw2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/primary_dark"
+                        android:minWidth="0dp"
+                        android:paddingHorizontal="14dp"
+                        android:text="Withdraw"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintStart_toEndOf="@id/btnAllocate2"
+                        app:layout_constraintTop_toTopOf="@id/btnAllocate2" />
                     <ImageView
                         android:id="@+id/btnDelete2"
                         android:layout_width="24dp"
@@ -172,13 +275,14 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/gray" />
                     <ProgressBar
+                        android:id="@+id/progressGoal2"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="12dp"
                         android:layout_marginTop="16dp"
                         android:progress="75"
                         android:progressTint="@color/green"
-                        app:layout_constraintTop_toBottomOf="@id/tvGoalAmount2" />
+                        app:layout_constraintTop_toBottomOf="@id/btnAllocate2" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -198,7 +302,7 @@
                         android:id="@+id/tvGoalName3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Beli Iphone"
+                        android:text="Memuat target"
                         android:textStyle="bold"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -208,11 +312,54 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Rp5.500.000 / Rp12.000.000"
+                        android:text="Rp0 / Rp0"
                         android:textColor="@color/gray"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvGoalName3" />
+                    <TextView
+                        android:id="@+id/tvGoalStatus3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_wallet_chip"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:text="Completed"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoalAmount3" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAllocate3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/green"
+                        android:minWidth="0dp"
+                        android:paddingHorizontal="14dp"
+                        android:text="Alokasi Dana"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoalStatus3" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnWithdraw3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/primary_dark"
+                        android:minWidth="0dp"
+                        android:paddingHorizontal="14dp"
+                        android:text="Withdraw"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintStart_toEndOf="@id/btnAllocate3"
+                        app:layout_constraintTop_toTopOf="@id/btnAllocate3" />
                     <ImageView
                         android:id="@+id/btnDelete3"
                         android:layout_width="24dp"
@@ -231,13 +378,14 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/gray" />
                     <ProgressBar
+                        android:id="@+id/progressGoal3"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="12dp"
                         android:layout_marginTop="16dp"
                         android:progress="45"
                         android:progressTint="@color/green"
-                        app:layout_constraintTop_toBottomOf="@id/tvGoalAmount3" />
+                        app:layout_constraintTop_toBottomOf="@id/btnAllocate3" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -258,7 +406,7 @@
                         android:id="@+id/tvGoalName4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nikah"
+                        android:text="Memuat target"
                         android:textStyle="bold"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -268,11 +416,54 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Rp8.700.000 / Rp10.000.000"
+                        android:text="Rp0 / Rp0"
                         android:textColor="@color/gray"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvGoalName4" />
+                    <TextView
+                        android:id="@+id/tvGoalStatus4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_wallet_chip"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:text="Completed"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoalAmount4" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAllocate4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/green"
+                        android:minWidth="0dp"
+                        android:paddingHorizontal="14dp"
+                        android:text="Alokasi Dana"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoalStatus4" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnWithdraw4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/primary_dark"
+                        android:minWidth="0dp"
+                        android:paddingHorizontal="14dp"
+                        android:text="Withdraw"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintStart_toEndOf="@id/btnAllocate4"
+                        app:layout_constraintTop_toTopOf="@id/btnAllocate4" />
                     <ImageView
                         android:id="@+id/btnDelete4"
                         android:layout_width="24dp"
@@ -291,13 +482,14 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/gray" />
                     <ProgressBar
+                        android:id="@+id/progressGoal4"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="12dp"
                         android:layout_marginTop="16dp"
                         android:progress="87"
                         android:progressTint="@color/green"
-                        app:layout_constraintTop_toBottomOf="@id/tvGoalAmount4" />
+                        app:layout_constraintTop_toBottomOf="@id/btnAllocate4" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 

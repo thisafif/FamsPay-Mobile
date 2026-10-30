@@ -34,11 +34,39 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminFamilyHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MemberDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TransactionDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GoalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".AuthActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.FamsPay.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
